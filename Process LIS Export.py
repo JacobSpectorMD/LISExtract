@@ -141,6 +141,8 @@ def extract_information(table, file_name, fields, dict_to_store, header_count=4)
                 setattr(new_obj, value['attribute'], row[value['index']].strip())
 
 
+# The key is the name of the column (lower case), and the attribute is what the property will be called once it is added
+# to the OVT object
 ovt_fields = {
     'id #': {'attribute': 'id', 'index': -1},
     'name': {'attribute': 'name', 'index': -1},
@@ -185,8 +187,8 @@ table_to_object = {
 
 procedures = {}
 tests = {}
-extract_information('EAP', '1-28-26 UCSF SUP Lab Procedure Data.csv', eap_fields, procedures)
-extract_information('OVT', '2-4-26 UCSF SUP Lab OVT Export (1).csv', ovt_fields, tests)
+extract_information('EAP', 'Procedure Data.csv', eap_fields, procedures)
+extract_information('OVT', 'Test Data.csv', ovt_fields, tests)
 
 
 # Adds test information to procedures
